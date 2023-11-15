@@ -1,15 +1,17 @@
 import './App.css'
-import Prueba from './components/Prueba/Prueba'
 import { Routes, Route } from "react-router-dom";
+import Transaction from './components/Transaction/Transaction';
 
 function App() {
 
 
   return (
     <>
+    <div className='font-sans'>
      <Routes>
-      <Route path="/" element={<Prueba/>} />
+      <Route path="/" element={<Transaction/>} />
      </Routes>
+     </div>
     </>
   )
 }
