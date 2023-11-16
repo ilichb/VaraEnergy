@@ -1,8 +1,10 @@
-import React from 'react'
 
 const Prueba = () => {
   return (
-    <div>HOLA MUNDO</div>
+    <div>
+      <h1 className=' text-gray-400'>hola mundo</h1>
+      <h1> como estas </h1>
+      </div>
   )
 }
 
