@@ -1,6 +1,6 @@
 import './App.css'
 import { Routes, Route } from "react-router-dom";
-import Transaction from './components/Transaction/Transaction';
+import ViewTransactions from './components/ViewTransactions/ViewTransactions';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
     <>
     <div className='font-sans'>
      <Routes>
-      <Route path="/" element={<Transaction/>} />
+      <Route path="/" element={<ViewTransactions/>} />
      </Routes>
      </div>
     </>
