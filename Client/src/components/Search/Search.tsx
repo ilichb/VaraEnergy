@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TbFilterSearch } from "react-icons/tb";
+// import { TbFilterSearch } from "react-icons/tb";
 
 const Search = () => {
   const [opcionSeleccionada, setOpcionSeleccionada] = useState("Compra");
@@ -88,7 +88,7 @@ const Search = () => {
             <option value="opcion3">Opción 3</option>
           </select>
         </div>
-        <TbFilterSearch style={{fontSize: '2em', color:'black'}} />
+        {/* <TbFilterSearch style={{fontSize: '2em', color:'black'}} /> */}
       </div>
     </div>
   );
