@@ -1,0 +1,46 @@
+{
+    "registros": [
+      {
+        "nombre": "Ana Rodriguez",
+        "estado_pago": "pendiente",
+        "tipo_transaccion": "comprar",
+        "cantidad_kw": 25120,
+        "total": 600
+      },
+      {
+        "nombre": "Juan Pérez",
+        "estado_pago": "rechazado",
+        "tipo_transaccion": "comprar",
+        "cantidad_kw": 22180,
+        "total": 900
+      },
+      {
+        "nombre": "María Gómez",
+        "estado_pago": "pendiente",
+        "tipo_transaccion": "comprar",
+        "cantidad_kw": 2290,
+        "total": 450
+      },
+      {
+        "nombre": "Carlos Martinez",
+        "estado_pago": "pagado",
+        "tipo_transaccion": "comprar",
+        "cantidad_kw": 11250,
+        "total": 1250
+      },
+      {
+        "nombre": "Laura Sánchez",
+        "estado_pago": "pagado",
+        "tipo_transaccion": "comprar",
+        "cantidad_kw": 23300,
+        "total": 1500
+      },
+      {
+        "nombre": "Roberto Torres",
+        "estado_pago": "pendiente",
+        "tipo_transaccion": "comprar",
+        "cantidad_kw": 98130,
+        "total": 11650
+      }
+    ]
+  }
