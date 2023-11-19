@@ -3,10 +3,11 @@ import { HiOutlineBell } from "react-icons/hi";
 import { FiAlertCircle } from "react-icons/fi"; 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import '../../App.css';
-import ModalConfig from "../../components/ModalConfig/ModalConfig";
-import ModalAdministrar from "../../components/ModalAdministrar/ModalAdministrar";
 import { useState } from "react"
+import '../../App.css';
+import ModalAdministrar from "../../components/ModalAdministrar/ModalAdministrar";
+import ModalConfig from "../../components/ModalConfig/ModalConfig";
+import ModalManten from "../../components/ModalMantenimiento/ModalManten";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -29,8 +30,9 @@ const options = {
 
 const SuperUser = () => {
 
-  const [show, setShow] = useState(false)
   const [showAdmin, setShowAdmin] = useState(false)
+  const [showConfig, setShowConfig] = useState(false)
+  const [showManten, setShowManten] = useState(false)
 
   return (
     <>
@@ -179,11 +181,11 @@ const SuperUser = () => {
         
             <div className="w-[300px] h-full 2xl:h-[450px] rounded flex flex-col m-4 2xl:mt-0">
               <div className="flex flex-col items-end mt-10">           
-                <button onClick={() => {setShow(true)}} className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff]" >
+                <button onClick={() => {setShowConfig(true)}} className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff]" >
                   Configuracion del sistema
                 </button>
                 
-                <button className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
+                <button onClick={() => {setShowManten(true)}} className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
                   Mantenimiento del sistema
                 </button>
                 <button className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
@@ -213,8 +215,8 @@ const SuperUser = () => {
       </div>
 
       <ModalAdministrar showAdmin={showAdmin} setShowAdmin={setShowAdmin}/>
-      <ModalConfig show={show} setShow={setShow}/>
-
+      <ModalConfig showConfig={showConfig} setShowConfig={setShowConfig}/>
+      <ModalManten showManten={showManten} setShowManten={setShowManten}/>
     </>
   );
 };
