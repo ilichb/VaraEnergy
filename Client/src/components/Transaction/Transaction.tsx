@@ -124,10 +124,24 @@ active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">Enviar</but
 
 
 
-        <div className="w-80 h-48 bg-gradient-to-r from-black to-secundary flex flex-col justify-around gap-10 bg-secondary rounded-md">
-          <div className="flex items-center justify-between p-2.5">
+        <div className="w-80 h-48 bg-gradient-to-r from-black to-secundary flex flex-col items-center justify-around gap-5 bg-secondary rounded-md">
+          <div className="flex items-center justify-center p-2.5">
             <h2 className="text-3xl">Saldo Total</h2>
           </div>
+          <div className="flex items-center gap-5">
+              <button
+                className="cursor-pointer transition-all bg-blue-500 text-white px-2 py-2 rounded-lg
+border-blue-600
+border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
+active:border-b-[2px] active:brightness-90 active:translate-y-[2px] "
+              >
+                Retirar Fondos
+              </button>
+              <button className="cursor-pointer transition-all bg-blue-500 text-white px-2 py-2 rounded-lg
+border-blue-600
+border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
+active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">Depositar Fondos</button>
+            </div>
           <h2 className="p-2.5 text-3xl ">${total.toFixed(2)} USD</h2>
         </div>
 
