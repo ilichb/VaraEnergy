@@ -9,6 +9,12 @@
   /* text-align: center; */
 }
 
+@media (max-width: 1400px) {
+  .laptop {
+    transform: scale(0.70);
+  }
+}
+
 /* .logo {
   height: 6em;
   padding: 1.5em;
