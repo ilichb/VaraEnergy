@@ -8,6 +8,8 @@ import '../../App.css';
 import ModalAdministrar from "../../components/ModalAdministrar/ModalAdministrar";
 import ModalConfig from "../../components/ModalConfig/ModalConfig";
 import ModalManten from "../../components/ModalMantenimiento/ModalManten";
+import ModalGenerad from "../../components/ModalGeneradores/ModalGenerad";
+import ModalTransac from "../../components/ModalTransacciones/ModalTransac";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -33,6 +35,8 @@ const SuperUser = () => {
   const [showAdmin, setShowAdmin] = useState(false)
   const [showConfig, setShowConfig] = useState(false)
   const [showManten, setShowManten] = useState(false)
+  const [showGenerad, setShowGenerad] = useState(false)
+  const [showTransac, setShowTransac] = useState(false)
 
   return (
     <>
@@ -88,15 +92,13 @@ const SuperUser = () => {
                 </span>
               </div>
             </div>
-        </section>
-
-        
+        </section>        
 
         <div className="w-full md:w-[40%]">
           <section className="flex justify-center items-center border-2 h-[25vh] md:h-[30vh] md:mb-6 mb-0">
             <div style={{ transform: "scale(0.70)" }}>
               <div className="flex flex-wrap lg:flex-nowrap m-2 p-2 border-2 justify-center items-center ">
-                <div className="w-[349px] h-[150px] md:h-[203px] rounded overflow-hidden shadow-lg flex flex-col lg:mr-6 2xl:mr-4">
+                <div className="w-[349px] h-[150px] lg:h-[203px] rounded overflow-hidden shadow-lg flex flex-col lg:mr-6 2xl:mr-4">
                   <div className="flex justify-center items-center h-20 md:h-full">
                     <span className="font-[600] text-[40px] 2xl:text-[50px] text-center text-[#0487F2] mt-10 md:mt-auto">
                       100.000 Kw
@@ -110,7 +112,7 @@ const SuperUser = () => {
                   </div>
                 </div>
 
-                <div className="w-[349px] h-[150px] md:h-[203px] rounded overflow-hidden shadow-lg flex flex-col lg:ml-6 2xl:ml-4">
+                <div className="w-[349px] h-[150px] lg:h-[203px] rounded overflow-hidden shadow-lg flex flex-col lg:ml-6 2xl:ml-4">
                   <div className="flex justify-center items-center h-20 md:h-full">
                     <span className="font-[600] text-[40px] 2xl:text-[50px] text-center text-[#0487F2] mt-10 md:mt-auto">
                       70.000 Kw
@@ -155,8 +157,6 @@ const SuperUser = () => {
           </section>
         </div>
 
-
-
         <section className="md:w-[30%] flex justify-center items-center md:h-[78vh] 2xl:h-[650px] mt-4 md:mt-10">
           <div className="hidden md:flex flex-col h-[115vh] 2xl:h-[700px] laptop">
             <div className="w-[300px] h-[600px] 2xl:h-[300px] rounded overflow-hidden shadow-lg md:flex flex-col justify-center m-4">
@@ -188,18 +188,23 @@ const SuperUser = () => {
                 <button onClick={() => {setShowManten(true)}} className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
                   Mantenimiento del sistema
                 </button>
-                <button className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
+
+                <button onClick={() => {setShowGenerad(true)}} className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
                   Administrar generadores
                 </button>
-                <button className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
+
+                <button onClick={() => {setShowTransac(true)}} className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
                   Administrar transacciones
                 </button>
+
                 <button className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
                   Configuracion de las tarifas
                 </button>
+
                 <button className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
                   Control de la red
                 </button>
+
                 <button className="w-[250px] h-[40px] bg-[#74C7ED] rounded-[5px] text-lg text-[#ffffff] mt-4" >
                   Informes y Analisis
                 </button>           
@@ -217,6 +222,8 @@ const SuperUser = () => {
       <ModalAdministrar showAdmin={showAdmin} setShowAdmin={setShowAdmin}/>
       <ModalConfig showConfig={showConfig} setShowConfig={setShowConfig}/>
       <ModalManten showManten={showManten} setShowManten={setShowManten}/>
+      <ModalGenerad showGenerad={showGenerad} setShowGenerad={setShowGenerad}/>
+      <ModalTransac showTransac={showTransac} setShowTransac={setShowTransac}/>
     </>
   );
 };

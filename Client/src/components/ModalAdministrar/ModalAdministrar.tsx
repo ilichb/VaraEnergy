@@ -2,6 +2,8 @@ import { useState } from "react"
 import { GrClose } from "react-icons/gr"; 
 import ModalConfig from "../ModalConfig/ModalConfig";
 import ModalManten from "../ModalMantenimiento/ModalManten";
+import ModalGenerad from "../ModalGeneradores/ModalGenerad";
+import ModalTransac from "../ModalTransacciones/ModalTransac";
 
 interface modalAdministrar{
   showAdmin: boolean;
@@ -12,6 +14,8 @@ function ModalAdministrar(props:modalAdministrar) {
 
   const [showConfig, setShowConfig] = useState(false)
   const [showManten, setShowManten] = useState(false)
+  const [showGenerad, setShowGenerad] = useState(false)
+  const [showTransac, setShowTransac] = useState(false)
 
   return props.showAdmin ?(
     <>
@@ -37,11 +41,11 @@ function ModalAdministrar(props:modalAdministrar) {
                   Mantenimiento del sistema
                 </button>
 
-                <button className="w-[250px] h-[30px] bg-[#74C7ED] rounded-[5px] text-md text-[#ffffff] mt-4" >
+                <button onClick={() => {setShowGenerad(true)}} className="w-[250px] h-[30px] bg-[#74C7ED] rounded-[5px] text-md text-[#ffffff] mt-4" >
                   Administrar generadores
                 </button>
 
-                <button className="w-[250px] h-[30px] bg-[#74C7ED] rounded-[5px] text-md text-[#ffffff] mt-4" >
+                <button onClick={() => {setShowTransac(true)}} className="w-[250px] h-[30px] bg-[#74C7ED] rounded-[5px] text-md text-[#ffffff] mt-4" >
                   Administrar transacciones
                 </button>
 
@@ -66,6 +70,8 @@ function ModalAdministrar(props:modalAdministrar) {
     </div>
     <ModalConfig showConfig={showConfig} setShowConfig={setShowConfig}/>
     <ModalManten showManten={showManten} setShowManten={setShowManten}/>
+    <ModalGenerad showGenerad={showGenerad} setShowGenerad={setShowGenerad}/>
+    <ModalTransac showTransac={showTransac} setShowTransac={setShowTransac}/>
     </>
   ) : null
 }
