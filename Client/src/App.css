@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 1rem;
   /* text-align: center; */
+  background-color: white;
 }
 
 @media (max-width: 1400px) {
