@@ -14,6 +14,9 @@ export default {
       fontFamily: {
         'sans': ['Roboto', 'sans-serif'],
       },
+      screens: {
+        '2xl': '1400px',
+      },
     },
   },
   plugins: [],
