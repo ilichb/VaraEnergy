@@ -1,28 +1,28 @@
 import { GrClose } from "react-icons/gr"; 
 
 interface modalConfig{
-  show: boolean;
-  setShow(show:boolean): void;
+  showConfig: boolean;
+  setShowConfig(showConfig:boolean): void;
 }
 
 function ModalConfig(props:modalConfig) {
   
-    return props.show ? (
+    return props.showConfig ? (
       <div className="bg-[#0000003d] fixed top-0 left-0 h-full w-full flex justify-center items-center">
         
-        <div className="flex flex-col justify-start items-center bg-slate-200 h-[100%] md:h-full w-full md:w-[60%] p-4 md:p-6 mt-40 md:mt-0">
+        <div className="flex flex-col justify-start items-center bg-slate-50 h-[100%] md:h-full w-full md:w-[60%] p-4 md:p-6 mt-40 md:mt-0">
           
           <div className="text-[#000000] text-2xl flex justify-end w-full">
             <button 
-            onClick={() => {props.setShow(false)}}            
+            onClick={() => {props.setShowConfig(false)}}            
             >
             <GrClose />
             </button>          
           </div>
         
-          <div className="text-[#000000] text-xl md:text-2xl md:mb-6">
+          <h1 className="text-[#000000] text-xl md:text-2xl md:mb-6">
             Configuracion del Sistema
-          </div>
+          </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 md:gap-y-10 mt-6 2xl:mt-10 max-h-[70vh] overflow-y-auto">
 
