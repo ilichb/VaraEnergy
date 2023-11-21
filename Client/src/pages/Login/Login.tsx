@@ -41,14 +41,14 @@ const Welcome = () => {
               <img
                 className={`${
                   isDesktop ? "w-8 h-8" : "w-6 h-6"
-                } ml-2 object-cover`}
+                } m-auto object-cover`}
                 src={GoogleIcon}
                 alt="Icono de Google"
               />
               <p
                 className={`${
                   isDesktop ? "text-base" : "text-xs"
-                } text-gray-700 ml-4 font-inter font-medium`}
+                } text-gray-700 m-auto font-inter font-medium`}
               >
                 Continuar con Google
               </p>
@@ -62,14 +62,14 @@ const Welcome = () => {
               <img
                 className={`${
                   isDesktop ? "w-8 h-8" : "w-6 h-6"
-                } ml-2 object-cover`}
+                } m-auto object-cover`}
                 src={FacebookIcon}
                 alt="Icono de Facebook"
               />
               <p
                 className={`${
                   isDesktop ? "text-base" : "text-xs"
-                } text-gray-700 ml-4 font-inter font-medium`}
+                } text-gray-700 m-auto font-inter font-medium `}
               >
                 Continuar con Facebook
               </p>
