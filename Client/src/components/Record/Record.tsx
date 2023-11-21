@@ -1,10 +1,10 @@
-import ModalSendToken from '../ModalTransaction/ModalSendToken';
+
 import Db from './Db.json'
 
 const Record = () => {
 const data = Db
 
-const getTextColor = (estadoPago) => {
+const getTextColor = (estadoPago: string) => {
   switch (estadoPago) {
     case 'Exitosa':
       return 'text-green-500'; // Puedes cambiar el color verde según tu preferencia
@@ -38,9 +38,6 @@ const getTextColor = (estadoPago) => {
           </div>
         </div>
       ))}
-    </div>
-    <div>
-      <ModalSendToken/>
     </div>
   </div>
   );

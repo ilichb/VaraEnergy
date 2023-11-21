@@ -1,18 +1,16 @@
 import { useState } from "react";
 
-const ModalSendToken = ({onClose}) => {
+const ModalConvertTokens = ({onClose}) => {
   const [userData, setUserData] = useState({
-    usuario: "",
-    cantidad: "",
-    tipo: "tonkends",
-    total: "",
+    tipo: "Gaias",
+    cantidad:'',
   });
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setUserData((prevData) => ({ ...prevData, [name]: value }));
   };
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     // Aquí puedes manejar la lógica de envío de datos si es necesario
     console.log("Datos enviados:", userData);
@@ -47,29 +45,11 @@ const ModalSendToken = ({onClose}) => {
             </svg>
           </button>
         </div>
-
-        <h1 className=" text-3xl">Enviar Dinero</h1>
-
+        <h1 className=" text-3xl">Convertir Token</h1>
         <div className="bg-white text-black w-full rounded-3xl h-full">
-          <form onSubmit={handleSubmit}>
-          <div className="mb-4 mt-5 p-2.5">
-            <label
-              htmlFor="usuario"
-              className="block text-sm font-medium text-gray-600"
-            >
-              Usuario
-            </label>
-            <input
-              type="text"
-              id="usuario"
-              name="usuario"
-              value={userData.usuario}
-              onChange={handleChange}
-              className="mt-1 p-2 w-full border rounded-md"
-            />
-          </div>
-
-          <div className="mb-4 p-2.5 flex">
+          <form onSubmit={handleSubmit} action="">
+            
+          <div className="mb-4 p-2.5 flex items-center">
             <div className="mr-2 w-1/2">
               <label
                 htmlFor="cantidad"
@@ -101,36 +81,23 @@ const ModalSendToken = ({onClose}) => {
                 onChange={handleChange}
                 className="mt-1 p-2 w-full border rounded-md"
               >
-                <option value="tonkends">Tonkends</option>
-                <option value="nfts">NFTs</option>
+                <option value="Gaias">Gaias</option>
+                <option value="Varas">Varas</option>
               </select>
             </div>
           </div>
-
-          <div className="mb-4 p-2.5">
-            <label
-              htmlFor="total"
-              className="block text-sm font-medium text-gray-600"
-            >
-              Total
-            </label>
-            <input
-              type="text"
-              id="total"
-              name="total"
-              value={userData.total}
-              onChange={handleChange}
-              className="mt-1 p-2 w-full border rounded-md"
-            />
-          </div>
-          <div className="flex justify-center">
-          <button
-            type="submit"
-            className="bg-secondary text-white px-4 py-2 rounded-md mb-5"
-          >
-            Enviar
-          </button>
-        </div>
+          <div className="flex gap-1 justify-center">
+                <h3 className="text-slate-500">Recibiras</h3>
+                <h3 className="text-black stroke-cyan-500">0.5 Varas</h3>
+            </div>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="bg-secondary text-white px-4 py-2 rounded-md mb-5"
+              >
+                Enviar
+              </button>
+            </div>
           </form>
         </div>
       </div>
@@ -138,4 +105,4 @@ const ModalSendToken = ({onClose}) => {
   );
 };
 
-export default ModalSendToken;
+export default ModalConvertTokens;
