@@ -1,11 +1,12 @@
+import ModalSendToken from '../ModalTransaction/ModalSendToken';
 import Db from './Db.json'
 
 const Record = () => {
 const data = Db
-console.log(data);
+
 const getTextColor = (estadoPago) => {
   switch (estadoPago) {
-    case 'exitoso':
+    case 'Exitosa':
       return 'text-green-500'; // Puedes cambiar el color verde según tu preferencia
     case 'rechazado':
       return 'text-red-500'; // Puedes cambiar el color rojo según tu preferencia
@@ -37,6 +38,9 @@ const getTextColor = (estadoPago) => {
           </div>
         </div>
       ))}
+    </div>
+    <div>
+      <ModalSendToken/>
     </div>
   </div>
   );
