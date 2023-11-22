@@ -3,6 +3,7 @@ import { MdOutlineTrendingDown } from "react-icons/md";
 import { useState, useEffect } from "react";
 import ModalSendToken from "../ModalTransaction/ModalSendToken";
 import ModalConvertTokens from "../ModalTransaction/ModalConvertTokens";
+import ModalFunds from "../ModalTransaction/ModalFunds";
 
 interface CryptoValues {
   gaia: number;
@@ -18,16 +19,21 @@ const Transaction = () => {
   //funciones varias
   const [sendTokenState, setSendTokenState] = useState(false);
   const [convertTokenState, setConvertTokenState] = useState(false);
+  const [fundsState, setFundsState] = useState(false)
 
   const onClose = () => {
     setSendTokenState(false);
     setConvertTokenState(false);
+    setFundsState(false)
   };
   const openCard = () => {
     setSendTokenState(true);
   };
   const openCardConvert = () => {
     setConvertTokenState(true);
+  };
+  const openCardFunds = () => {
+    setFundsState(true);
   };
 
   //funciones crypto
@@ -185,6 +191,7 @@ active:border-b-[2px] active:brightness-90 active:translate-y-[2px]"
           </div>
           <div className="flex items-center gap-5">
             <button
+            onClick={openCardFunds}
               className="cursor-pointer transition-all bg-blue-500 text-white px-2 py-2 rounded-lg
 border-blue-600
 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
@@ -215,6 +222,11 @@ active:border-b-[2px] active:brightness-90 active:translate-y-[2px]"
             <ModalConvertTokens onClose={onClose} />
           </div>
         </div>
+      )}
+      {fundsState && (
+              <div>
+              <ModalFunds onClose={onClose}/>
+            </div>
       )}
     </div>
   );

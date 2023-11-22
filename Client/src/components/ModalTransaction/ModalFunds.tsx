@@ -1,28 +1,32 @@
 import { useState } from "react";
 
-interface ModalProps {
+
+interface ModalFundsProps {
     onClose: () => void; // La propiedad onClick espera una función que no devuelve ningún valor
   }
+  
 
-const ModalConvertTokens = ({onClose}:ModalProps) => {
-  const [userData, setUserData] = useState({
-    tipo: "Gaias",
-    cantidad:'',
-  });
+const ModalFunds = ({onClose}:ModalFundsProps) => {
+    const [userData, setUserData] = useState({
+        email: '',
+        cantidad:'',
+      });
+    
+      const handleChange = (e: { target: { name: any; value: any } }) => {
+        const { name, value } = e.target;
+        setUserData((prevData) => ({ ...prevData, [name]: value }));
+      };
+      const handleSubmit = (e: { preventDefault: () => void }) => {
+        e.preventDefault();
+        // Aquí puedes manejar la lógica de envío de datos si es necesario
+        console.log("Datos enviados:", userData);
+      };
 
-  const handleChange = (e: { target: { name: any; value: any } }) => {
-    const { name, value } = e.target;
-    setUserData((prevData) => ({ ...prevData, [name]: value }));
-  };
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    // Aquí puedes manejar la lógica de envío de datos si es necesario
-    console.log("Datos enviados:", userData);
-  };
+
 
   return (
     <div className="fixed bg-black/60 top-0 left-0 w-full h-full flex items-center justify-center">
-      <div className="bg-secondary gap-5 rounded-3xl relative w-2/6 h-1/2 flex flex-col items-center justify-between">
+        <div className="bg-secondary gap-5 rounded-3xl relative w-2/6 h-1/2 flex flex-col items-center justify-between">
         <div className="flex justify-end w-full">
           <button onClick={onClose} className="text-xl text-red-500 p-2.5">
             <svg
@@ -49,12 +53,12 @@ const ModalConvertTokens = ({onClose}:ModalProps) => {
             </svg>
           </button>
         </div>
-        <h1 className=" text-3xl">Convertir Token</h1>
+        <h1 className=" text-3xl">Retirar Fondos</h1>
         <div className="bg-white text-black w-full rounded-3xl h-full">
           <form onSubmit={handleSubmit} action="">
             
           <div className="mb-4 p-2.5 flex items-center">
-            <div className="mr-2 w-1/2">
+            <div className="mr-2 w-11/12">
               <label
                 htmlFor="cantidad"
                 className="block text-sm font-medium text-gray-600"
@@ -62,6 +66,7 @@ const ModalConvertTokens = ({onClose}:ModalProps) => {
                 Cantidad
               </label>
               <input
+              placeholder="Max. $3000"
                 type="text"
                 id="cantidad"
                 name="cantidad"
@@ -70,43 +75,37 @@ const ModalConvertTokens = ({onClose}:ModalProps) => {
                 className="mt-1 p-2 w-full border rounded-md"
               />
             </div>
-
-            <div className="ml-2 w-1/2 p-2.5">
+          </div>
+          <div className="mr-2 p-2.5 w-11/12">
               <label
-                htmlFor="tipo"
+                htmlFor="email"
                 className="block text-sm font-medium text-gray-600"
               >
-                Tipo
+                Correo Skrill
               </label>
-              <select
-                id="tipo"
-                name="tipo"
-                value={userData.tipo}
+              <input
+                placeholder="skrill@hotmail.com"
+                type="email"
+                id="email"
+                name="email"
+                value={userData.email}
                 onChange={handleChange}
                 className="mt-1 p-2 w-full border rounded-md"
-              >
-                <option value="Gaias">Gaias</option>
-                <option value="Varas">Varas</option>
-              </select>
-            </div>
-          </div>
-          <div className="flex gap-1 justify-center">
-                <h3 className="text-slate-500">Recibiras</h3>
-                <h3 className="text-black stroke-cyan-500">0.5 Varas</h3>
+              />
             </div>
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-secondary text-white px-4 py-2 rounded-md mb-5"
+                className="bg-secondary text-white w-6/12 h-16 text-2xl mt-5 rounded-md mb-5"
               >
                 Enviar
               </button>
             </div>
           </form>
         </div>
-      </div>
+        </div>
     </div>
-  );
-};
+  )
+}
 
-export default ModalConvertTokens;
+export default ModalFunds

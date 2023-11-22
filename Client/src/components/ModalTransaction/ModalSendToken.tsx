@@ -1,6 +1,9 @@
 import { useState } from "react";
+interface ModalProps {
+  onClose: () => void; // La propiedad onClick espera una función que no devuelve ningún valor
+}
 
-const ModalSendToken = ({onClose}) => {
+const ModalSendToken = ({onClose}:ModalProps) => {
   const [userData, setUserData] = useState({
     usuario: "",
     cantidad: "",
