@@ -12,7 +12,9 @@ import Eclipse from '../../assets/Eclipse.svg'
 import { useState, useEffect } from 'react';
 import  PopUpAlert  from '../../components/PopUpALert/PopUpAlert.tsx'
 import json from './data.json'
-
+import { Link, NavLink } from 'react-router-dom';
+import PanelUsuarioFinal from '../panelUsuarioFinal/PanelUsuarioFinal.tsx';
+import { format } from 'date-fns'
 
 
 
@@ -94,7 +96,7 @@ const GraficoEnergia = () => {
         label: 'Valores de energía',
         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         backgroundColor: ['#74C7ED', '#F37B7B', '#699CD0'],
-        barThickness: 50,
+        barThickness: 40,
       },
     ],
   });
@@ -143,10 +145,16 @@ const GraficoEnergia = () => {
     };
   }, []); 
 
+
+
+    const currentDate = new Date();
+
+    const showDate = format(currentDate, 'dd/MM/yyyy HH:mm');
+  
   return (
-    <div className='w-full'>
-      <section className="border-2">
-        <div className="flex m-2 p-2 border-2 justify-center">
+    <div className='w-full '>
+      <section className="">
+        <div className="flex ml-[20rem] p-2 justify-center"> 
           <div className="w-[349px] h-[203px] rounded overflow-hidden shadow-lg flex flex-col m-4">
             <div className="flex justify-center items-center h-full">
               <span className="font-[600] text-[40px] text-center text-[#0487F2] mt-auto">
@@ -180,10 +188,10 @@ const GraficoEnergia = () => {
 
 
         <div className=' flex flex-col p-2 mb-24 ml-10'>
-          <button className='text-[#699CD0] text-[20px] underline mt-4 text-left' >Panel de generación y consumo</button>
-          <button className='text-[#699CD0] text-[20px] underline mt-4 text-left' >Administrar Dispositivos.</button>
+          <button className='text-[#699CD0] text-[18px] underline mt-4 text-left' >Panel de generación y consumo</button>
+          <NavLink to= '/panelUsuarioFinal' ><button className='text-[#699CD0] text-[18px] underline mt-4 text-left' >Administrar Dispositivos.</button></NavLink>
          <button 
-         className='text-[#699CD0] text-[20px] underline mt-4 text-left' 
+         className='text-[#699CD0] text-[18px] underline mt-4 text-left' 
          onClick={openPopup}
          >Crear Alertas
           
@@ -221,14 +229,14 @@ const GraficoEnergia = () => {
             <p className='text-[#857D7D]'>Total</p>
             </div>
           </div>
-          <div className='flex mx-auto max-w-screen-md h-[200px]  '>
+          <div className='flex mx-auto max-w-screen-md h-[200px]'>
             <Bar
             data={barData}
             options={optionsBar}
             />
-
-            <img className='ms:hidden ml-72' src={Eclipse} alt="" />
-
+            <div className=" border-4 m-auto ml-32 bg-gray-100 h-32 rounded-full flex items-center justify-center border-gray-300">
+            <p className='text-gray-400 text-xl m-2 text-center'>{showDate}</p> 
+</div>
           </div>
   
       </section>
