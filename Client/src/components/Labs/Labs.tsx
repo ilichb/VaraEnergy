@@ -1,4 +1,8 @@
-import AllBalancesFungibleToken from "../TokensComponents/AllBalancesFungibleToken"
+import { Burn } from "../TokensComponents/Burn"
+import { Mint } from "../TokensComponents/Mint"
+import { LocalBalanceToken } from "../TokensComponents/MyBalanceToken"
+import { NameFungibleToken } from "../TokensComponents/NameFungibleToken"
+
 
 
 
@@ -10,7 +14,8 @@ const Labs = () => {
             <img className="w-96 h-96" src="/LogoGaia.svg" alt="" />
             <h2 className="text-black text-3xl">Gaia Token</h2>
             <h2 className="text-black">Saldo:</h2>
-            <AllBalancesFungibleToken/>
+            <Mint/>
+            <Burn/>
         </div>
     </div>
   )

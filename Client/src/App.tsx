@@ -6,6 +6,8 @@ import ViewTransactions from './components/ViewTransactions/ViewTransactions';
 import Login from './pages/Login/Login'
 import SuperUser from './pages/superUser/SuperUser';
 import Labs from './components/Labs/Labs';
+import { Buffer } from 'buffer'
+globalThis.Buffer = Buffer
 
 
 function App() {

@@ -5,6 +5,11 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './store'; // Importa la tienda
 import {BrowserRouter} from 'react-router-dom'
+import { Buffer } from 'buffer';
+
+if (!window.Buffer) {
+  window.Buffer = Buffer;
+}
 
 ReactDOM.render(
   <Provider store={store}>

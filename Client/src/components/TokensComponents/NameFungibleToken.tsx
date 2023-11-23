@@ -17,7 +17,7 @@ function NameFungibleToken() {
 
   // Add your programID
   const programIDFT =
-    "0xaa6fe1b9efdcd34134ee3d552395b134198bd077650e1a11b83ebc326dde7632";
+    "0xd46f5f0fba63bff9a43f6d4cca46d09ef0955b024e1bb70851dad96391c69986";
 
    // Add your metadata.txt
   const meta =
@@ -35,11 +35,12 @@ function NameFungibleToken() {
       })
       .catch(({ message }: Error) => alert.error(message));
 
-
+      console.log("Full state after setFullState:", fullState);
         setNametoken(name);
   };
 
   useEffect(() => {
+    console.log("Executing useEffect");
     getBalance();
   });
 
