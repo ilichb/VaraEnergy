@@ -5,6 +5,7 @@ import GraficoEnergia from './pages/GraficoEnergia/GraficoEnergia';
 import ViewTransactions from './components/ViewTransactions/ViewTransactions';
 import Login from './pages/Login/Login'
 import SuperUser from './pages/superUser/SuperUser';
+import Labs from './components/Labs/Labs';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path="/superUser" element={<SuperUser/>} />
       <Route path="/" element={<ViewTransactions/>} />
       <Route path="/login" element={<Login/>} />
+      <Route path='/lab' element={<Labs/>}/>
      </Routes>
      </div>
     </>
