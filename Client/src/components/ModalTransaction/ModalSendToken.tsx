@@ -10,6 +10,7 @@ const ModalSendToken = ({onClose}:ModalProps) => {
     tipo: "tonkends",
     total: "",
   });
+  
 
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
