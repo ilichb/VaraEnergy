@@ -1,3 +1,4 @@
+import Data from "./Data.json";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -7,15 +8,35 @@ import {
   CategoryScale,
   LinearScale,
 } from "chart.js";
+import Chart from 'chart.js/auto';
+
 import { Pie, Bar } from "react-chartjs-2";
-// import Eclipse from "../../assets/Eclipse.svg";
 import { useState, useEffect } from "react";
 import PopUpAlert from "../../components/PopUpALert/PopUpAlert.tsx";
-import json from "./data.json";
 import { NavLink } from "react-router-dom";
 // import PanelUsuarioFinal from "../panelUsuarioFinal/PanelUsuarioFinal.tsx";
 import { format } from "date-fns";
-import Polygon5 from "../../assets/Polygon5.svg";
+// import Polygon5 from "../../assets/Polygon5.svg";
+
+interface Data {
+  energia_solar: number[];
+  energia_termica: number[];
+  energia_eolica: number[];
+  // total_generado: number[];
+  // total_consumido: number[];
+  // total_excedente: number[];
+}
+
+
+interface BarData {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: number[];
+    backgroundColor: string[];
+    barThickness: number;
+  }[];
+}
 
 ChartJS.register(
   ArcElement,
@@ -36,7 +57,7 @@ const dataPie = {
     },
   ],
 };
-
+// estilos
 const optionsPie = {
   responsive: true,
   maintainAspectRatio: false,
@@ -54,7 +75,7 @@ const optionsBar = {
     y: {
       display: false,
       beginAtZero: true,
-      max: 15000,
+      max: 20000,
     },
   },
   elements: {
@@ -66,98 +87,35 @@ const optionsBar = {
 
 const GraficoEnergia = () => {
   const [popupOpen, setPopupOpen] = useState(false);
-  const [tipoEnergia, setTipoEnergia] = useState("");
-  const [barData, setBarData] = useState({
+  const [tipoEnergia, setTipoEnergia] = useState<keyof Data>("Solar");
+  const [barData, setBarData] = useState<BarData>({
     labels: ["", "", "", "", "", "", "", "", "", "", ""],
     datasets: [
       {
         // type: "bar",
         label: "Valores de energía",
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        data: Array.from({ length: 11 }, () => 0),
         backgroundColor: ["#74C7ED", "#F37B7B", "#699CD0"],
         barThickness: 25,
       },
     ],
   });
 
-  const handleSelectionEnergy = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const selectedType = event.target.value;
 
-    // Asigna el tipo de energía seleccionado y los datos correspondientes
-    setTipoEnergia(selectedType);
-    switch (selectedType) {
-      case "solar":
-        setBarData({
-          labels: ["", "", "", "", "", "", "", "", "", "", " "],
-          datasets: [
-            {
-              label: "Valores de energía",
-              data: [json.energia_solar],
-              backgroundColor: ["#74C7ED", "#F37B7B", "#699CD0"],
-              barThickness: 25,
-            },
-          ],
-        });
-        break;
-      case "Termica":
-        setBarData({
-          labels: ["", "", "", "", "", "", "", "", "", "", " "],
-          datasets: [
-            {
-              label: "Valores de energía",
-              data: json.energia_termica,
-              backgroundColor: ["#74C7ED", "#F37B7B", "#699CD0"],
-              barThickness: 25,
-            },
-          ],
-        });
-        break;
-      case "Eolica":
-        setBarData({
-          labels: ["", "", "", "", "", "", "", "", "", "", " "],
-          datasets: [
-            {
-              label: "Valores de energía",
-              data: json.energia_eolica,
-              backgroundColor: ["#74C7ED", "#F37B7B", "#699CD0"],
-              barThickness: 25,
-            },
-          ],
-        });
-        break;
-      default:
-        // Puedes manejar un caso por defecto si es necesario
-        break;
-    }
-  };
-
-  const openPopup = () => {
-    setPopupOpen(true);
-  };
-
-  const closePopup = () => {
-    setPopupOpen(false);
-  };
-
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch("src/pages/GraficoEnergia/data.json");
-  //     const data = await response.json();
-  //     return data;
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //     return null;
-  //   }
-  // };
 
   const updateBarChart = () => {
-    const newData = Array.from({ length: 12 }, () =>
-      Math.floor(Math.random() * 15001)
-    );
+    // console.log("Updating bar chart with tipoEnergia:", tipoEnergia);
 
-    const newBarData = {
+    const newData = tipoEnergia && Data[tipoEnergia]
+    ? Data[tipoEnergia]
+    : Array.from({ length: 11 }, () => 0);
+
+    // console.log('Tipo de Energía:', tipoEnergia);
+    // console.log('Datos de Energía:', Data[tipoEnergia]);
+    // console.log('New data:', newData);
+    console.log(typeof newData[0]); 
+
+    const newBarData: BarData = {
       ...barData,
       datasets: [
         {
@@ -166,28 +124,46 @@ const GraficoEnergia = () => {
         },
       ],
     };
-
+  
     setBarData(newBarData);
   };
 
   useEffect(() => {
+    console.log('Data from JSON:', Data);
+
     const intervalId = setInterval(updateBarChart, 1500);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [tipoEnergia]);
 
   const currentDate = new Date();
 
   const showDate = format(currentDate, "dd/MM/yyyy HH:mm");
 
-  // const handleSeleccion = (event: React.ChangeEvent<HTMLSelectElement>) => {
-  //   setTipoEnergia(event.target.value);
-  // };
+  const handleSeleccion = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setTipoEnergia(event.target.value);
+  };
 
-  // no es necesario por ahora
-  const mostrarSeleccion = () => {};
+//json data
+const totalGenerado = Data["total_generado"][0] || 0; // Si la propiedad no está definida, asigna 0
+const totalConsumido = Data["total_consumido"][0] || 0;
+const totalExcedente = Data["total_excedente"][0] || 0;
+
+
+
+
+
+  
+const openPopup = () => {
+  setPopupOpen(true);
+};
+
+const closePopup = () => {
+  setPopupOpen(false);
+};
+
   return (
     <div className="w-full">
       <section className="bg-white md:p-8">
@@ -195,7 +171,7 @@ const GraficoEnergia = () => {
           <div className=" ms:w-228 ] md:w-[349px] h-[203px]  rounded overflow-hidden shadow-lg flex flex-col m-4">
             <div className="flex justify-center items-center h-full">
               <span className="font-[600] text-[40px] text-center text-[#0487F2] mt-auto">
-                10.000 Kw
+                {totalGenerado}Kw
               </span>
             </div>
             <div className="flex justify-end items-end h-full">
@@ -205,19 +181,19 @@ const GraficoEnergia = () => {
           <div className="ms:w-228 md:w-[349px] h-[203px] rounded overflow-hidden shadow-lg flex flex-col m-4">
             <div className="flex justify-center items-center h-full">
               <span className="font-[600] text-[40px] text-center text-[#0487F2] mt-auto">
-                7.000 Kw
+                {totalConsumido}Kw
               </span>
             </div>
             <div className="flex justify-end items-end h-full">
               <span className="text-[#A7A4B2E0] mb-4 mr-4">
-                Total Consumido
+               totalConsumido
               </span>
             </div>
           </div>
           <div className="ms:w-228 md:w-[349px] h-[203px] rounded overflow-hidden shadow-lg flex flex-col m-4">
             <div className="flex justify-center items-center h-full">
               <span className="font-[600] text-[40px] text-center text-[#0487F2] mt-auto">
-                3.000 Kw
+                {totalExcedente} Kw
               </span>
             </div>
             <div className="flex justify-end items-end h-full">
@@ -258,7 +234,7 @@ const GraficoEnergia = () => {
           <select
             id="tipoEnergia"
             name="tipoEnergia"
-            onChange={handleSelectionEnergy}
+            onChange={handleSeleccion}
             value={tipoEnergia}
             className="w-[150px] sm:w-[151px] h-[47px] bg-neutral-100 rounded-[15px] text-[#857D7D] m-1"
           >
@@ -270,7 +246,7 @@ const GraficoEnergia = () => {
           <select
             id="tipoEnergia"
             name="tipoEnergia"
-            onChange={handleSelectionEnergy}
+            onChange={handleSeleccion}
             value={tipoEnergia}
             className="w-[150px] sm:w-[151px] h-[47px] bg-neutral-100 rounded-[15px] text-[#857D7D] m-1"
           >
@@ -279,7 +255,7 @@ const GraficoEnergia = () => {
           <select
             id="tipoEnergia"
             name="tipoEnergia"
-            onChange={handleSelectionEnergy}
+            onChange={handleSeleccion}
             value={tipoEnergia}
             className="w-[150px] sm:w-[151px] h-[47px] bg-neutral-100 rounded-[15px] text-[#857D7D] m-1"
           >
@@ -315,6 +291,8 @@ const GraficoEnergia = () => {
             <p className="text-gray-400 text-xl m-2 text-center">{showDate}</p>
           </div>
         </div>
+
+
       </section>
     </div>
   );
