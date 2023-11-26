@@ -27,8 +27,10 @@ module.exports = {
     'import/prefer-default-export': 'off', // force named exports
     'import/no-default-export': 'error',
     'import/order': ['error', { 'newlines-between': 'always' }],
+    'import/order': 'off',
 
     '@typescript-eslint/no-unused-vars': 'warn', // 'error' is not convinient in development
+    "@typescript-eslint/explicit-module-boundary-types": "off",
 
     'consistent-return': 'off', // we want functions to have different return behavior
 

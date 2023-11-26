@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 
 import Polygon from "../../assets/Polygon.svg";
 import PolygonUp from "../../assets/PolygonUp.svg";
-// import Refresh from "../../assets/Refresh.svg";
 import back from "../../assets/back.svg";
+
+
 
 
 interface Dispositivo {

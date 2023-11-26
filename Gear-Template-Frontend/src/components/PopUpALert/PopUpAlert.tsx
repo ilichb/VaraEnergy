@@ -10,7 +10,7 @@ const PopUpALert: React.FC<PopupProps> = function ({ onClose })  {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 ">
       <div className="bg-white p-8 max-w-md w-[447px] h-[542px] rounded-[20px]">
         <div className="flex justify-end">
-          <button className="text-xl text-red-500" onClick={onClose}>
+          <button type="button" className="text-xl text-red-500" onClick={onClose}>
             <img src={ClosePopUp} alt="" />
           </button>
         </div>
@@ -48,5 +48,6 @@ const PopUpALert: React.FC<PopupProps> = function ({ onClose })  {
     </div>
   );
 };
+
 
 export  {PopUpALert};
