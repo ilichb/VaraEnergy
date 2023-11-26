@@ -1,10 +1,11 @@
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+
 import Polygon from "../../assets/Polygon.svg";
 import PolygonUp from "../../assets/PolygonUp.svg";
 // import Refresh from "../../assets/Refresh.svg";
 import back from "../../assets/back.svg";
-import { useState, useEffect } from "react";
-import data from '../../pages/panelUsuarioFinal/data-dispositivos-encontrados.json'
+
 
 interface Dispositivo {
   Nombre: string;
@@ -17,7 +18,7 @@ interface Dispositivo {
   Temperatura: string;
 }
 
-const PanelUsuarioFinal = () => {
+const PanelUsuarioFinal: React.FC = () => {
   const [menuAbierto, setMenuAbierto] = useState<number | null>(null); // Cambié el tipo de estado a number | null
   const [dispositivosEncontrados, setDispositivosEncontrados] = useState<
     Dispositivo[]
@@ -55,11 +56,16 @@ const PanelUsuarioFinal = () => {
         <h1 className="sm:text-2xl md:text-5xl lg:text-2xl xl:text-4xl text-[#5A5A5A] text-center my-auto mx-auto mt-8">
           Dispositivos Encontrados
         </h1>
-        <button className="w-28 h-10 bg-neutral-100 rounded-[5px] text-[#857D7D] hidden md:inline">
+        <button
+          type="button"
+          className="w-28 h-10 bg-neutral-100 rounded-[5px] text-[#857D7D] hidden md:inline"
+        >
           Actualizar
         </button>
         <NavLink to="/graficoEnergia">
-          <button>
+          <button 
+          type="button"
+          >
             <img className="w-10 h-10 hidden md:inline" src={back} alt="" />
           </button>
         </NavLink>
@@ -85,6 +91,7 @@ const PanelUsuarioFinal = () => {
           </div>
           <div className="flex justify-center mt-[-32px]">
             <button
+              type="button"
               className="flex items-center text-[#5A5A5A] text-[16px] text-base font-semibold"
               onClick={() => toggleMenu(index === menuAbierto ? null : index)}
             >
@@ -123,13 +130,22 @@ const PanelUsuarioFinal = () => {
           </p>
 
           <div className="mt-4 sm:mt-12">
-            <button className="w-[99px] h-[40px] bg-neutral-200 rounded-[5px] text-[#857D7D] m-1">
+            <button
+              type="button"
+              className="w-[99px] h-[40px] bg-neutral-200 rounded-[5px] text-[#857D7D] m-1"
+            >
               Reiniciar
             </button>
-            <button className="w-[99px] h-[40px] bg-neutral-200 rounded-[5px] text-[#857D7D] m-1">
+            <button
+              type="button"
+              className="w-[99px] h-[40px] bg-neutral-200 rounded-[5px] text-[#857D7D] m-1"
+            >
               Actualizar
             </button>
-            <button className="w-[99px] h-[40px] bg-neutral-200 rounded-[5px] text-[#857D7D] m-1">
+            <button
+              type="button"
+              className="w-[99px] h-[40px] bg-neutral-200 rounded-[5px] text-[#857D7D] m-1"
+            >
               Diagnosticar
             </button>
           </div>
@@ -141,6 +157,7 @@ const PanelUsuarioFinal = () => {
               Opciones Avanzadas
             </a>
             <button
+              type="button"
               className="flex ml-auto items-center text-[#5A5A5A] text-[16px] text-base font-semibold"
               onClick={() => toggleMenu(null)}
             >
